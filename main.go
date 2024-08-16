@@ -12,7 +12,7 @@ import (
 func main() {
 	if len(os.Args) == 3 {
 	} else {
-		fmt.Println("[!] Error: [Provide 2 arguments.]")
+		fmt.Println("[!] Error: [Provide two arguments.]")
 		return
 	}
 	input, output := os.Args[1], os.Args[2]
@@ -30,7 +30,6 @@ func main() {
 		fmt.Println("[+] Data read successfully.")
 	}
 	formattedText := string(text_byte)
-	// fmt.Printf("%q\n", formattedText)
 	for range "123" {
 		// formattedText = FormatText(formattedText)
 		formattedText = FormatPunctuation(FormatText(FormatPunctuation(formattedText)))
@@ -45,8 +44,6 @@ func main() {
 	formatedApostrophe := regexp.MustCompile(`'\s*(.*?)\s*'`).ReplaceAllString(formattedText, "'$1'")
 	formattedText = regexp.MustCompile(`(.*?) +' +(.*?)`).ReplaceAllString(formatedApostrophe, "$1' $2")
 	formattedText = regexp.MustCompile(`"\s*(.*?)\s*"`).ReplaceAllString(formattedText, `"$1"`)
-	// fmt.Printf("%q\n", formattedText)
-	// output_text := "asdasd dasdas das\\ndas \ndttft yff "
 	err = os.WriteFile(output, []byte(formattedText), 0o777)
 	if err != nil {
 		fmt.Printf("[!] Error: [%s]\n\n", err.Error())
