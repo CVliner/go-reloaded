@@ -109,13 +109,6 @@ func article(text string) string {
 	return text
 }
 func FormatPunctuation(text string) string {
-	//article := article(text)
-	/*lowpattern := regexp.MustCompile(`(?i)\b(low)\b`).ReplaceAllString(article, "low")
-	cappattern := regexp.MustCompile(`(?i)\b(cap)\b`).ReplaceAllString(lowpattern, "cap")
-	uppattern := regexp.MustCompile(`(?i)\b(up)\b`).ReplaceAllString(cappattern, "up")
-	hexpattern := regexp.MustCompile(`(?i)\b(hex)\b`).ReplaceAllString(uppattern, "hex")
-	binpattern := regexp.MustCompile(`(?i)\b(bin)\b`).ReplaceAllString(hexpattern, "bin")*/
-	// replaceAllBacktick := regexp.MustCompile("`").ReplaceAllString(article, "'")
 	remove_spaces := regexp.MustCompile(` {1,}`).ReplaceAllString(text, " ")
 	bracketWithoutSpace := regexp.MustCompile(`\(\s*(.*?)\s*\)`).ReplaceAllString(remove_spaces, "($1)")
 	formated := regexp.MustCompile(` *([.,!?:;]) *`).ReplaceAllString(bracketWithoutSpace, "$1")
@@ -123,16 +116,11 @@ func FormatPunctuation(text string) string {
 	formated = regexp.MustCompile(`(\))(\()`).ReplaceAllString(formated, "$1 $2")
 	formated = regexp.MustCompile(`(\()([0-9a-fA-F]+)`).ReplaceAllString(formated, "$1 $2")
 	formated = regexp.MustCompile(`(\()(\s)([b-c][ia])`).ReplaceAllString(formated, "$1$3")
-	// fmt.Println(formated)
 	formated = regexp.MustCompile(`(\w)(\()`).ReplaceAllString(formated, "$1 $2")
 	formated = regexp.MustCompile(`(\')(\()`).ReplaceAllString(formated, "$1 $2")
-	// fmt.Println(formated)
 	formated = regexp.MustCompile(`([.,!?:;]+)([^ ]|$)`).ReplaceAllString(formated, "$1 $2")
-	// fmt.Println(formated)
 	formatedApostrophe := regexp.MustCompile(`'\s*(.*?)\s*'`).ReplaceAllString(formated, "'$1'")
-	// fmt.Println(formatedApostrophe)
 	formated = regexp.MustCompile(`(.*?) +' +(.*?)`).ReplaceAllString(formatedApostrophe, "$1' $2")
-	// fmt.Println(formated)
 	formatedQuotes := regexp.MustCompile(`"\s*(.*?)\s*"`).ReplaceAllString(formated, `"$1"`)
 	spaceStartLine := regexp.MustCompile(`^\s*`).ReplaceAllString(formatedQuotes, "")
 	txt := regexp.MustCompile(`\(lower case\)`).ReplaceAllString(spaceStartLine, "(low)")
