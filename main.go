@@ -129,15 +129,9 @@ func FormatPunctuation(text string) string {
 func FormatText(inputText string) string {
 	reForConvert := regexp.MustCompile(`\((cap|up|low|hex|bin)((,\s*\w+\[\S])|(,\s*\w+))?\)`) //`\((cap|up|low|hex|bin)((,\s*\S+)|(,\s*\S+\W+))?\)
 	matches := reForConvert.FindAllString(inputText, -1)
-	// fmt.Println(matches)
 	for _, match := range matches {
-		// fmt.Println(match)
 		reMatchSlash := regexp.MustCompile(`([()])`).ReplaceAllString(match, `\$1`)
-		// fmt.Println(reMatchSlash)
-		// break
 		reAllPrevWords := regexp.MustCompile(`(?s).*?` + reMatchSlash)
-		// reAllPrevWords := regexp.MustCompile(`(\S+\s+|\s+\S+)*` + reMatchSlash) //`(.+?)\(%s\)`
-		// fmt.Println(reAllPrevWords)
 		count := 0
 		for _, char := range inputText {
 			if char == '\'' {
