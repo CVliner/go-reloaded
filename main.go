@@ -31,7 +31,6 @@ func main() {
 	}
 	formattedText := string(text_byte)
 	for range "123" {
-		// formattedText = FormatText(formattedText)
 		formattedText = FormatPunctuation(FormatText(FormatPunctuation(formattedText)))
 	}
 	formattedText = regexp.MustCompile(`(\()\s*(\w+)`).ReplaceAllString(formattedText, "$1$2")
