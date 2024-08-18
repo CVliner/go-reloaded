@@ -178,17 +178,14 @@ func convertMatch(allPrevWords, match, reMatchSlash string) string {
 	onlyPrevWords = regexp.MustCompile(` {1,}`).ReplaceAllString(onlyPrevWords, " ")
 	// fmt.Println(onlyPrevWords)
 	words := regexp.MustCompile(` `).Split(onlyPrevWords, -1)
-	//fmt.Println(words)
 	for i, elem := range words {
 		fmt.Print(i)
 		fmt.Print(": ")
 		fmt.Printf("%q\n", elem)
 	}
-	// fmt.Println(words[3])
 	wordCount := 0
 	for index := len(words) - 1; index >= 0; index-- {
 		wordTemp := words[index]
-		// fmt.Println(words[index])
 		if wordNum == wordCount {
 			break
 		}
@@ -200,7 +197,6 @@ func convertMatch(allPrevWords, match, reMatchSlash string) string {
 			wordTemp1 := ""
 			add := ""
 			for _, char := range wordTemp {
-				// fmt.Printf("Processing character: %q\n", char)
 				if char != '\n' && char != '\r' {
 					wordTemp1 += string(char)
 				} else if char == '\n' {
@@ -219,20 +215,16 @@ func convertMatch(allPrevWords, match, reMatchSlash string) string {
 				}
 			}
 		case "hex":
-			// fmt.Printf("%q\n", wordTemp)
 			wordTemp1 := ""
 			add := ""
 			for _, char := range wordTemp {
-				// fmt.Printf("Processing character: %q\n", char)
 				if char != '\n' && char != '\r' {
 					wordTemp1 += string(char)
 				} else if char == '\n' {
 					add = "\n"
 				}
 			}
-			// fmt.Printf("Final result: %q\n", wordTemp1)
 			decimal, _ := strconv.ParseInt(wordTemp1, 16, 64)
-			// fmt.Printf("%q\n", decimal)
 			convertedNum := strconv.Itoa(int(decimal))
 			if convertedNum == "0" {
 				words[index] = wordTemp + " "
@@ -252,7 +244,6 @@ func convertMatch(allPrevWords, match, reMatchSlash string) string {
 			words[index] = capitalizeWord(strings.ToLower(wordTemp))
 		}
 	}
-	// fmt.Println(strings.Join(words, " "))
 	return strings.Join(words, " ")
 }
 func capitalizeWord(s string) string {
