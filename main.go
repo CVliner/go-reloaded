@@ -141,18 +141,9 @@ func FormatText(inputText string) string {
 		allPrevWords := reAllPrevWords.FindString(inputText)
 		allPrevWords_sub := strings.Split(allPrevWords, match)
 		allPrevWords = allPrevWords_sub[0] + match
-		//if count==1 {
-		//	allPrevWords=
-		//}
-		//fmt.Println(allPrevWords)
-		// fmt.Println(inputText)
-		// fmt.Println(allPrevWords)
 		converted := convertMatch(allPrevWords, match, reMatchSlash)
-		// fmt.Println(converted)
 		inputText = strings.Replace(inputText, allPrevWords, converted, 1)
-		// fmt.Println(inputText)
 	}
-	// fmt.Println(inputText)
 	return inputText
 }
 func convertMatch(allPrevWords, match, reMatchSlash string) string {
