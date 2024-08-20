@@ -153,21 +153,14 @@ func convertMatch(allPrevWords, match, reMatchSlash string) string {
 			allPrevWords = strings.TrimSuffix(allPrevWords, match)
 		}
 	}
-	// fmt.Println(allPrevWords)
-	// return allPrevWords
 	wordCase := regexp.MustCompile(`\b(cap|up|low|hex|bin)\b`).FindString(match)
 	wordNum, err := strconv.Atoi(regexp.MustCompile(`\d+`).FindString(match))
-	// fmt.Println(wordNum)
 	if err != nil {
 		wordNum = 1
 	}
-	// fmt.Println(match)
 	onlyPrevWords := strings.TrimSuffix(allPrevWords, match)
-	// fmt.Println(onlyPrevWords)
 	onlyPrevWords = strings.Replace(onlyPrevWords, "\n", " \n", -1)
-	// fmt.Println(onlyPrevWords)
 	onlyPrevWords = regexp.MustCompile(` {1,}`).ReplaceAllString(onlyPrevWords, " ")
-	// fmt.Println(onlyPrevWords)
 	words := regexp.MustCompile(` `).Split(onlyPrevWords, -1)
 	for i, elem := range words {
 		fmt.Print(i)
