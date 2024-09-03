@@ -34,7 +34,6 @@ func main() {
 		formattedText = FormatPunctuation(FormatText(FormatPunctuation(formattedText)))
 	}
 	formattedText = regexp.MustCompile(`(\()\s*(\w+)`).ReplaceAllString(formattedText, "$1$2")
-	// formattedText = regexp.MustCompile(`(\()\s*(\d+)`).ReplaceAllString(formattedText, "$1$2")
 	formattedText = strings.ReplaceAll(formattedText, "\r", "")
 	for range "123" {
 		formattedText = regexp.MustCompile(`(\S+)(\n*)(\s*)([:;.!?])(\w*)`).ReplaceAllString(formattedText, "$1$4$5")
