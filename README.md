@@ -29,11 +29,7 @@ The tool which should be build will receive as arguments the name of a file cont
 - The program is not considered to work with negative numbers in commands, for instance, as (cap, -2) 
 
 - (hex) and (bin) instances working with numbers (0,1) for (bin) with numbers (0-9, a-f, A-F) for (hex) without any punctuation or apostroph or special symbols added
-
-
-### Allowed packages
-_Standard Go_ packages are allowed.
-
+- 
 ### Usage
 ```
 $ cat sample.txt
