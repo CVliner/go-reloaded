@@ -12,12 +12,12 @@ import (
 func main() {
 	if len(os.Args) == 3 {
 	} else {
-		fmt.Println("[!] Error: [Provide two arguments.]")
+		fmt.Println("[!] Error: [Provide 2 arguments.]")
 		return
 	}
 	input, output := os.Args[1], os.Args[2]
 	if os.Args[1][len(os.Args[1])-4:len(os.Args[1])] != ".txt" || os.Args[2][len(os.Args[2])-4:len(os.Args[2])] != ".txt" {
-		fmt.Println("[!] Error: [incorrect file name (0-9a-zA-Z_) or extension (.txt).]")
+		fmt.Println("[!] Error: [Incorrect file name (0-9a-zA-Z_) or extension (.txt).]")
 		fmt.Println("Program exited.")
 		log.Fatalln()
 	}
