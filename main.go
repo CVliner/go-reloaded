@@ -172,7 +172,7 @@ func convertMatch(allPrevWords, match, reMatchSlash string) string {
 		if wordNum == wordCount {
 			break
 		}
-		if len(words[index]) != 0 && strings.ContainsAny(words[index], "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890") && words[index] != "\n''\r" && words[index] != "()" && words[index] != "\n\r" && words[index] != "\r" && words[index] != "\n" && words[index] != "'\r" && words[index] != "(" && words[index] != ")" && words[index] != "'" && words[index] != "’" && words[index] != "," && words[index] != "!" && words[index] != "?" && words[index] != "[" && words[index] != "]" && words[index] != "\"" && words[index] != ":" && words[index] != "\n:" && words[index] != ";" && words[index] != "." && words[index] != "" && words[index] != "''" && words[index] != "'''" && words[index] != "''''" && words[index] != "'''''" && words[index] != "'''''''''" && words[index] != "''''''" && words[index] != "'''''''" && words[index] != "''''''''''" && words[index] != "''''''''''''" {
+		if len(words[index]) != 0 && strings.ContainsAny(words[index], "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890") && words[index] != "\n''\r" && words[index] != "()" && words[index] != "\n\r" && words[index] != "\r" && words[index] != "\n" && words[index] != "'\r"  && words[index] != "\n:" {
 			wordCount++
 		}
 		switch wordCase {
